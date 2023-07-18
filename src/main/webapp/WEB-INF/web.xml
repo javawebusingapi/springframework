@@ -3,7 +3,7 @@
   <display-name>springwebapp</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
   <!-- DispatcherServlet 설정 -->
@@ -12,7 +12,7 @@
   	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
   	<!-- 웹 애플리케이션이 시작할 때 서블릿 객체 생성  -->
   	<!-- 최초 요청일 떄 응답을 빠르게 하기 위해 -->
-  	<load-on-startup>1</load-on-startup>
+ <!--  	<load-on-startup>2</load-on-startup> -->
   </servlet>
   <servlet-mapping>
   	<servlet-name>DispatcherServlet</servlet-name>
