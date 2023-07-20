@@ -61,4 +61,15 @@
   </filter-mapping>
   
   <!-- ========================================================================================= -->
+  <!-- Ch02 -->
+  <!-- Filter & Interceptor 설정 -->
+  <filter>
+  	<filter-name>Ch02FilterA</filter-name>
+  	<filter-class>com.mycompany.springwebapp.filter.Ch02FilterA</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>Ch02FilterA</filter-name>
+  	<url-pattern>/ch02/*</url-pattern>
+  </filter-mapping>
+  	
 </web-app>
