@@ -98,5 +98,14 @@
 	    <version>2.15.2</version>
 	</dependency>
 	
+	<!-- CH04 -->
+	<!-- @Valid 어노테이션을 사용하기 위한 의존 설치 -->
+	<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+	<dependency>
+	    <groupId>javax.validation</groupId>
+	    <artifactId>validation-api</artifactId>
+	    <version>2.0.1.Final</version>
+	</dependency>
+	
   </dependencies>
 </project>

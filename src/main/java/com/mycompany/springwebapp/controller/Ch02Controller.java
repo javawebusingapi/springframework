@@ -196,5 +196,4 @@ public class Ch02Controller {
 		log.info("실행");
 		return "ch02/adminPage";
 	}
-	
 }

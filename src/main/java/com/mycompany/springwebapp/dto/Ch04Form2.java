@@ -7,11 +7,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 @Data
-public class Ch04Dto {
-	private String param1;
-	private String param2;
-	private String param3;
-	private boolean param4;
+public class Ch04Form2 {
+	private String param21;
+	private String param22;
+	private String param23;
+	private boolean param24;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date param5;
+	private Date param25;
 }
