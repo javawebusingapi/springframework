@@ -25,4 +25,40 @@
          <a class="text-white" href="${pageContext.request.contextPath}/ch04/content">요청 데이터의 유효성 검사</a>
       </h6>
    </li> 
+   <li class="nav-item mb-2">
+      <h6 class="text-white">
+         <span class="mr-2">Exam05.</span>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch05/content">요청 헤더 및 쿠키 사용</a>
+      </h6>
+   </li>
+   <li class="nav-item mb-2">
+      <h6 class="text-white">
+         <span class="mr-2">Exam06.</span>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch06/content">Forward와 Redirect</a>
+      </h6>
+   </li>
+   <li class="nav-item mb-2">
+      <h6 class="text-white">
+         <span class="mr-2">Exam07.</span>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch07/content">모델 (데이터) 전달</a>
+      </h6>
+   </li>
+   <li class="nav-item mb-2">
+      <h6 class="text-white">
+         <span class="mr-2">Exam08.</span>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch08/content">세션 이용</a>
+      </h6>
+   </li>
+   <li class="nav-item mb-2">
+      <h6 class="text-white">
+         <span class="mr-2">Exam09.</span>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch09/content">파일 업로드 & 다운로드</a>
+      </h6>
+   </li>
+   <li class="nav-item mb-2">
+      <h6 class="text-white">
+         <span class="mr-2">Exam10.</span>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch10/content">~~~</a>
+      </h6>
+   </li>
 </ul>

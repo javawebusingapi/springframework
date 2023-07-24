@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,9 +26,15 @@
             	</a>
             	<div>
                		<div>
-                   		<a href="#" class="btn btn-success btn-sm">로그인</a>        	
+               			<c:if test="${login != null}">
+							<img src="${pageContext.request.contextPath}/resources/images/image/${login.mid}.jpg" width="30"/>
+							<a href="${pageContext.request.contextPath}/ch08/logout" class="btn btn-danger btn-sm">로그아웃</a>
+						</c:if>
+						<c:if test="${login == null}">
+							<a href="${pageContext.request.contextPath}/ch08/content" class="btn btn-success btn-sm">로그인</a>        	
+						</c:if>
                		</div>
-            	</div>
+            	</div>	
          	</nav>
          	<div class="flex-grow-1 container-fluid">
             	<div class="row h-100">
