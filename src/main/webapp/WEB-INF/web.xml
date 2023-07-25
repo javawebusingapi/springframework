@@ -33,9 +33,26 @@
   		<param-name>contextConfigLocation</param-name>
   		<param-value>classpath:spring/dispatcher/*.xml</param-value>
   	</init-param>
+  	<!-- Ch10 404처리를 @ControllerAdvice에 처리하도록 설정 -->
+  	<init-param>
+  		<param-name>throwExceptionIfNoHandlerFound</param-name>
+  		<param-value>true</param-value>
+  	</init-param>
   	<!-- 웹 애플리케이션이 시작할 때 서블릿 객체 생성  -->
   	<!-- 최초 요청일 떄 응답을 빠르게 하기 위해 -->
-  <load-on-startup>1</load-on-startup>
+  	<load-on-startup>1</load-on-startup>
+	  <!-- Ch09 -->
+	  <!-- Servlet 3.0 이상에서 지원하는 multipart/form-data 설정 -->
+	  <multipart-config>
+	  	<!-- 임시 파일이 저장될 폴더의 절대 경로만 가능 -->
+	  	<location>C:/Temp</location>
+	  	<!-- 파일  하나당 최대 크기 20MB 이하만 허용-->
+	  	<max-file-size>20971520</max-file-size>
+	  	<!-- 전체 요청 바디 크기가 100MB 이하만 허용 -->
+	  	<max-request-size>104857600</max-request-size>
+	  	<!-- 임시 파일로 저장해야할 파일의 크기 지정 (1MB이상 저장)-->
+	  	<file-size-threshold>1048576</file-size-threshold>
+	  </multipart-config>
   </servlet>
   <servlet-mapping>
   	<servlet-name>DispatcherServlet</servlet-name>
@@ -71,5 +88,7 @@
   	<filter-name>Ch02FilterA</filter-name>
   	<url-pattern>/ch02/*</url-pattern>
   </filter-mapping>
-  	
+  <!-- ========================================================================================= -->
+
+  
 </web-app>

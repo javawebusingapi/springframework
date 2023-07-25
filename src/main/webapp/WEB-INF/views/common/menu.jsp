@@ -58,7 +58,19 @@
    <li class="nav-item mb-2">
       <h6 class="text-white">
          <span class="mr-2">Exam10.</span>
-         <a class="text-white" href="${pageContext.request.contextPath}/ch10/content">~~~</a>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch10/content">에러 및 예외 처리</a>
+      </h6>
+   </li>
+   <li class="nav-item mb-2">
+      <h6 class="text-white">
+         <span class="mr-2">Exam11.</span>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch11/content">Spring Tag (form) Library</a>
+      </h6>
+   </li>
+   <li class="nav-item mb-2">
+      <h6 class="text-white">
+         <span class="mr-2">Exam12.</span>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch12/content">~~~</a>
       </h6>
    </li>
 </ul>
