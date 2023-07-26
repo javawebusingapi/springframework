@@ -70,7 +70,31 @@
    <li class="nav-item mb-2">
       <h6 class="text-white">
          <span class="mr-2">Exam12.</span>
-         <a class="text-white" href="${pageContext.request.contextPath}/ch12/content">~~~</a>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch12/content">객체 생성</a>
+      </h6>
+   </li>
+   <li class="nav-item mb-2">
+      <h6 class="text-white">
+         <span class="mr-2">Exam13.</span>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch13/content">~</a>
+      </h6>
+   </li>
+   <li class="nav-item mb-2">
+      <h6 class="text-white">
+         <span class="mr-2">Exam14.</span>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch14/content">~</a>
+      </h6>
+   </li>
+   <li class="nav-item mb-2">
+      <h6 class="text-white">
+         <span class="mr-2">Exam15.</span>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch15/content">~</a>
+      </h6>
+   </li>
+   <li class="nav-item mb-2">
+      <h6 class="text-white">
+         <span class="mr-2">Exam16.</span>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch16/content">~</a>
       </h6>
    </li>
 </ul>

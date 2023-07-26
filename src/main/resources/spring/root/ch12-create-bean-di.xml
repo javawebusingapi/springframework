@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
+	<!-- ================================================================================================ -->
+	<!-- bean태그로 객체 생성 , id가 없을 시 Class의 첫자를 소문자로 한 이름(ch12ServiceCreateByXml)으로 관리-->
+	<bean class="com.mycompany.springwebapp.service.Ch12ServiceCreateByXml"/>	
+	<!-- ================================================================================================ -->
+	<bean id="name1" class="com.mycompany.springwebapp.service.Ch12ServiceCreateByXml"/>
+	<!-- ================================================================================================ -->
+	<!-- 정적 메소드를 이용해서 객체를 생성 -->
+	<bean name="name2" class="com.mycompany.springwebapp.service.Ch12ServiceCreateByXml" factory-method="getInstance"/>
+	<!-- ================================================================================================ -->
+	<!-- 인스턴스 메소드를 이용해서 객체를 생성 -->
+	<bean id="name3" class="com.mycompany.springwebapp.service.Ch12ServiceCreateByXml" factory-method="getSelfObject" factory-bean="name1"/>
+	<!-- ==================W============================================================================== -->
+	<!-- DI 테스트를 위한 객체 생성(기본 생성자) -->
+	<!-- <bean class="com.mycompany.springwebapp.service.Ch12ServiceDiByXml">
+		name은 Setter의 맨 앞자리만 소문자로 바꾼 setter를 호출
+		<property name="ch12DaoByXml1" ref="daoByXml1"></property>
+		<property name="ch12DaoByXml2" ref="daoByXml2"></property>
+		<property name="ch12DaoByXml3" ref="daoByXml3"></property>
+	</bean> -->
+	<bean class="com.mycompany.springwebapp.service.Ch12ServiceDiByXml">
+		<!-- 생성자 주입 -->
+		<constructor-arg ref="daoByXml1"/>
+		<!-- setter 호출 및 의존 주입 -->
+		<property name="ch12DaoByXml2" ref="daoByXml2"></property>
+		<property name="ch12DaoByXml3" ref="daoByXml3"></property>
+		<!-- setter의 매개변수가 List 형태기 때문에 이러한 값을 가짐 -->
+		<property name="collection1">
+			<list>
+				<value>아이템1</value>
+				<value>아이템2</value>
+				<value>아이템3</value>
+			</list>
+		</property>
+		<!-- setter의 매개변수가 Set 형태기 때문에 이러한 값을 가짐 -->
+		<property name="collection2">
+			<set>
+				<!-- set안에 객체를 항목으로 넣을때 bean id로 ref에 지정하면 된다.-->
+				<ref bean="daoByXml1"></ref>
+				<ref bean="daoByXml2"></ref>
+				<ref bean="daoByXml3"></ref>
+			</set>
+		</property>
+		<!-- setter의 매개변수가 Map 형태기 때문에 이러한 값을 가짐 -->
+		<property name="collection3">
+			<map>
+				<entry key="key1" value="홍길동"/>
+				<entry key="key2" value-ref="daoByXml1"/>
+			</map>
+		</property>
+		<!-- setter의 매개변수가 Properties 형태기 때문에 이러한 값을 가짐 -->
+		<property name="collection4">
+			<props>
+				<prop key="key1">데이터1</prop>
+				<prop key="key2">데이터2</prop>
+				<prop key="key3">데이터3</prop>
+				<prop key="key4">데이터4</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="daoByXml1" class="com.mycompany.springwebapp.dao.Ch12DaoByXml1"/>
+	<bean id="daoByXml2" class="com.mycompany.springwebapp.dao.Ch12DaoByXml2"/>
+	<bean id="daoByXml3" class="com.mycompany.springwebapp.dao.Ch12DaoByXml3"/>
+</beans>
