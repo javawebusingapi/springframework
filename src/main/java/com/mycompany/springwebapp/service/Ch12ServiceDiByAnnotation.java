@@ -3,11 +3,13 @@ package com.mycompany.springwebapp.service;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.springwebapp.dao.Ch12DaoByAnnotation1;
 import com.mycompany.springwebapp.dao.Ch12DaoByAnnotation2;
 import com.mycompany.springwebapp.dao.Ch12DaoByAnnotation3;
+import com.mycompany.springwebapp.dao.Ch12DaoI;
 
 import lombok.extern.slf4j.Slf4j;
 //관리객체(필수)
@@ -19,6 +21,11 @@ public class Ch12ServiceDiByAnnotation {
 	private Ch12DaoByAnnotation1 daoAnnotation1;
 	private Ch12DaoByAnnotation2 daoAnnotation2;
 	private Ch12DaoByAnnotation3 daoAnnotation3;	
+	
+	@Autowired @Qualifier("ch12DaoImpl1")
+	private Ch12DaoI ch12Dao1;
+	@Resource(name="ch12DaoImpl2")
+	private Ch12DaoI ch12Dao2;
 	
 	//생성자
 	public Ch12ServiceDiByAnnotation() {
@@ -45,5 +52,7 @@ public class Ch12ServiceDiByAnnotation {
 		daoAnnotation1.method();
 		daoAnnotation2.method();
 		daoAnnotation3.method();
+		ch12Dao1.method();
+		ch12Dao2.method();
 	}
 }
