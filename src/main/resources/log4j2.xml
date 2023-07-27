@@ -10,7 +10,17 @@
     <Logger name="com.mycompany.springwebapp" level="info" additivity="false">
       <AppenderRef ref="Out"/>
     </Logger>
-
+    <!-- CH13 -->
+	<!-- Webapp에서 Db로 보내는 SQL문을 로그로 출력하기 위한 설정 -->
+	<Logger name="jdbc.sqlonly" level="info" additivity="false">
+      <AppenderRef ref="Out"/>
+    </Logger>
+    <!-- CH13 -->
+    <!-- DB가 보내는 결과를 출력하기 위한 설정 -->
+    <Logger name="jdbc.resultset" level="error" additivity="false">
+      <AppenderRef ref="Out"/>
+    </Logger>
+    
     <Root level="error">
       <AppenderRef ref="Out"/>
     </Root>

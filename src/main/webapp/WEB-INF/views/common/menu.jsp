@@ -76,7 +76,7 @@
    <li class="nav-item mb-2">
       <h6 class="text-white">
          <span class="mr-2">Exam13.</span>
-         <a class="text-white" href="${pageContext.request.contextPath}/ch13/content">~</a>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch13/content">Service와 DAO(데이터 접근객체)</a>
       </h6>
    </li>
    <li class="nav-item mb-2">

@@ -17,7 +17,7 @@ public class Ch08LoginCheckInterceptor implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		log.info("Interceptor ADMIN 전처리 실행");
+		//log.info("Interceptor ADMIN 전처리 실행");
 		
 		HandlerMethod hm = (HandlerMethod) handler;
 		Login login = hm.getMethodAnnotation(Login.class);

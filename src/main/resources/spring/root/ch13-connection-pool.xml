@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
+	<bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp2.BasicDataSource">
+		
+		<!-- <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/> -->
+		
+		<property name="driverClassName" value="net.sf.log4jdbc.DriverSpy"/><!-- Logger 사용 -->
+		<property name="url" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:orcl"/> <!-- JDBC 경로 요청 -->
+		
+		<property name="username" value="spring" />
+		<property name="password" value="oracle" />
+		<!-- Connection 개수 설정 -->
+		<property name="maxTotal" value="3"/>
+		<property name="initialSize" value="2"/>
+		<property name="maxIdle" value="2"/>
+	</bean>
+	
+	
+</beans>
