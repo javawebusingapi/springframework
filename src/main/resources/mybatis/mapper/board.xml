@@ -1,24 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mycompany.springwebapp.dao.mybatis.Ch13BoardDao">
+<mapper namespace="com.mycompany.springwebapp.dao.Ch13BoardDao">
 	<!-- spring쪽에서 객체가 DB에 넘어가는경우 parameterType -->
-	<insert id="insert" parameterType="com.mycompany.springwebapp.dto.Ch13Board">
+	<insert id="insert" parameterType="Board">
+		<!-- 시퀀스의 다음번호를 알 수 있게 확인하기 -->
+		<!-- order="BEFORE"은 insert를 실행하기 전에 실행하는 것 -->
+		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
+			select seq_bno.nextval from dual
+		</selectKey>
+		
 		insert into board (bno, btitle, bcontent, mid, bdate, bhitcount)
-		values(seq_bno.nextval, #{btitle}, #{bcontent}, #{mid}, sysdate, 0)
+		values(#{bno}, #{btitle}, #{bcontent}, #{mid}, sysdate, 0)
 	</insert>
 	
-	<!-- 한 행을 이 resultType객체로 가져온다. (DB가 두개가 있다면 2개가 만들어진다.) -->
+	<!-- 한 행을 이 resultType객체로 가져온다. (리턴되는 행이 2개라면 객체가 2개가 만들어진다.) -->
 	<!-- 결과를 가져오는 경우 resultType -->
-	<select id="selectAll" resultType="com.mycompany.springwebapp.dto.Ch13Board">
-		select bno, btitle, bcontent, mid, bdate, bhitcount, battachoname, battachsname, battachtype, battachdata
-		from board 
+	<select id="selectByPage" parameterType="Pager" resultType="Board">
+		<![CDATA[
+		select rnum, bno, btitle, mid, bdate, bhitcount, battachoname
+				from (
+				    select rownum as rnum, bno, btitle, mid, bdate, bhitcount, battachoname
+				    from (
+				        select bno, btitle, mid, bdate, bhitcount, battachoname
+				        from board
+				        order by bno desc
+				    )
+				    where rownum <= ${endRowNo}
+				)
+				where rnum >= ${startRowNo}
+		]]>
 	</select>
 	
-	<update id="updateByBno" parameterType="com.mycompany.springwebapp.dto.Ch13Board">
+	<select id="count" resultType="int">
+		select count(*) from board
+	</select>
+	
+	<select id="selectByBno" parameterType="int" resultType="Board">
+		select bno, btitle, bcontent, mid, bdate, bhitcount, battachoname, battachsname, battachtype, battachdata
+		from board
+		where bno = #{bno}
+	</select>
+	
+	<update id="updateByBno" parameterType="Board">
 		update board set btitle=#{btitle}, bcontent=#{bcontent} where bno=#{bno}
 	</update>
 	
 	<delete id="deleteByBno" parameterType="int">
 		delete from board where bno=#{bno}
 	</delete>
+	
 </mapper>

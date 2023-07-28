@@ -21,6 +21,7 @@
 	 		<a href="deleteboard" class="btn btn-info btn-sml">게시물 삭제(delete)</a>
 	 	</div>
 	</div>
+	
 </div>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
