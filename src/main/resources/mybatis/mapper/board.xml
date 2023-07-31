@@ -8,9 +8,14 @@
 		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
 			select seq_bno.nextval from dual
 		</selectKey>
-		
-		insert into board (bno, btitle, bcontent, mid, bdate, bhitcount)
-		values(#{bno}, #{btitle}, #{bcontent}, #{mid}, sysdate, 0)
+		<!-- null이 들어갈 컬럼값은 반드시 jdbcType을 명시해야 한다. -->
+		insert into board (bno, btitle, bcontent, mid, bdate, bhitcount, battachoname, battachtype, battachsname, battachdata)
+		values(#{bno}, #{btitle}, #{bcontent}, #{mid}, sysdate, 0, 
+		#{battachoname, jdbcType=VARCHAR}, 
+		#{battachtype, jdbcType=VARCHAR}, 
+		#{battachsname, jdbcType=VARCHAR},
+		#{battachdata, jdbcType=BLOB}
+		)
 	</insert>
 	
 	<!-- 한 행을 이 resultType객체로 가져온다. (리턴되는 행이 2개라면 객체가 2개가 만들어진다.) -->

@@ -53,9 +53,8 @@ public class Ch13BoardServiceImpl implements Ch13BoardService{
 	@Override
 	public void addHitcount(int bno) {
 		Ch13Board board = boardDao.selectByBno(bno);
-		board.setBhitcount(board.getBhitcount()+1);
+		board.setBhitcount(board.getBhitcount() + 1);
 		boardDao.updateByBno(board);
-		
 		/*Ch13Board board = boardDaoOld.selectByBno(bno);
 		board.setBhitcount(board.getBhitcount()+1);
 		boardDaoOld.updateByBno(board);*/

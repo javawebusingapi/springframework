@@ -12,16 +12,23 @@
   	<mvc:interceptors>
   		<mvc:interceptor>
 	  		<mvc:mapping path="/ch02/**/"/>
+	  		<mvc:exclude-mapping path="/resources/**"/>
 	  			<bean id="Ch02InterceptorA" class="com.mycompany.springwebapp.Interceptor.Ch02InterceptorA"/>
 	  	</mvc:interceptor>
 	  	<mvc:interceptor>
 	  		<mvc:mapping path="/ch02/**/"/>
+	  		<mvc:exclude-mapping path="/resources/**"/>
 	  			<bean id="Ch02InterceptorB" class="com.mycompany.springwebapp.Interceptor.Ch02InterceptorB"/>
 	  	</mvc:interceptor>
 	  	<mvc:interceptor>
-	  		<mvc:mapping path="/**"/>
+	  		<mvc:mapping path="/ch08/**"/>
 	  		<mvc:exclude-mapping path="/resources/**"/>
 	  			<bean id="Ch08LoginCheckInterceptor" class="com.mycompany.springwebapp.Interceptor.Ch08LoginCheckInterceptor"/>
+	  	</mvc:interceptor>
+	  	<mvc:interceptor>
+	  		<mvc:mapping path="/ch13/**"/>
+	  		<mvc:exclude-mapping path="/resources/**"/>
+	  			<bean id="Ch13LoginCheckInterceptor" class="com.mycompany.springwebapp.Interceptor.Ch13LoginCheckInterceptor"/>
 	  	</mvc:interceptor>
   	</mvc:interceptors>
 </beans>

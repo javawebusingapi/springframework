@@ -10,7 +10,12 @@ public interface Ch13MemberService {
 			FAIL_MENABLED
 	}
 	
-	public void join(Ch13Member member);        	//회원 가입
+	public enum JoinResult {
+		SUCCESS,
+		FAIL_DUPLICATED_MID
+	}
+	
+	public JoinResult join(Ch13Member member);        	//회원 가입
 	public LoginResult login(Ch13Member member);	//로그인
 	public void logout(String mid);    		  		//로그아웃
 	public void modify(Ch13Member member);	    	//회원 정보 수정

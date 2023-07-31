@@ -18,9 +18,15 @@ public class Ch13Board {
 	private Date bdate;
 	private String mid;
 	private int bhitcount;
+	
+	//Client -> Controller 보내는 데이터 받기위한 Field
+	private MultipartFile battach;
+	//Controller -> Service -> DAO -> DB 로 전달하기 위한 필드
 	private String battachoname;
 	private String battachsname;
+	//방법1 : 서버 파일 시스템이 파일로 저장
 	private String battachtype;
-	private Blob battachdata;
-	private MultipartFile battach;
+	//방법2 : DB에 Blob타입으로 저장
+	//Byte[] <- MyBatis -> Blob  (MyBatis에서 알아서 처리해준다)
+	private byte[] battachdata;
 }
