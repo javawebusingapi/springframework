@@ -13,12 +13,15 @@
 		<config>src/main/resources/spring/dispatcher/ch01-static-resource.xml</config>
 		<config>src/main/resources/spring/dispatcher/ch04-ch11-error-message.xml</config>
 		<config>src/main/resources/spring/dispatcher/ch02-ch08-ch13interceptor.xml</config>
+		<config>src/main/resources/spring/root/ch15-transaction.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/resources/spring/root/ch12-properties.xml</config>
 		<config>src/main/resources/spring/root/ch13-mybatis.xml</config>
 		<config>src/main/resources/spring/dispatcher/ch09-multipart-resolver.xml</config>
+		<config>src/main/resources/spring/dispatcher/ch13-properties.xml</config>
 		<config>src/main/resources/spring/root/ch12-create-bean-di.xml</config>
+		<config>src/main/resources/spring/dispatcher/ch14-aop.xml</config>
 		<config>src/main/resources/spring/root/ch13-connection-pool.xml</config>
 	</autoconfigs>
 	<configSets>

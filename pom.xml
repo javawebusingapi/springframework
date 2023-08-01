@@ -161,5 +161,14 @@
 	    <artifactId>spring-security-core</artifactId>
 	    <version>5.5.8</version>
 	</dependency>
+	<!-- CH14 -->
+	<!-- AOP 사용을 위한 라이브러리 -->
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjweaver</artifactId>
+	    <version>1.9.19</version>
+	    <scope>runtime</scope>
+	</dependency>
+	
   </dependencies>
 </project>

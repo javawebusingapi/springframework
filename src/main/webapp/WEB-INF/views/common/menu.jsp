@@ -82,13 +82,13 @@
    <li class="nav-item mb-2">
       <h6 class="text-white">
          <span class="mr-2">Exam14.</span>
-         <a class="text-white" href="${pageContext.request.contextPath}/ch14/content">~</a>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch14/content">AOP</a>
       </h6>
    </li>
    <li class="nav-item mb-2">
       <h6 class="text-white">
          <span class="mr-2">Exam15.</span>
-         <a class="text-white" href="${pageContext.request.contextPath}/ch15/content">~</a>
+         <a class="text-white" href="${pageContext.request.contextPath}/ch15/content">Transaction</a>
       </h6>
    </li>
    <li class="nav-item mb-2">

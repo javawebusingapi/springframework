@@ -54,16 +54,16 @@
 						</p>
 					</c:if>
 				</div>
-				
 				<div>
 					<span class="title">내용:</span> <br/>
 					<textarea style="width:100%" readonly>${board.bcontent}</textarea>
 				</div>
 				
 				<a class="btn btn-info btn-sm mt-2" href="getboardList">목록</a>
-				<a class="btn btn-info btn-sm mt-2" href="updateBoardForm?bno=${board.bno}">수정</a>
-				<a class="btn btn-info btn-sm mt-2" href="deleteBoard?bno=${board.bno}">삭제</a>
-				
+				<c:if test="${ch13Login.mid == board.mid}">
+					<a class="btn btn-info btn-sm mt-2" href="updateBoard?bno=${board.bno}">수정</a>
+					<a class="btn btn-info btn-sm mt-2" href="deleteBoard?bno=${board.bno}">삭제</a>				
+				</c:if>
 			</div>
 		</div>
 	</div>

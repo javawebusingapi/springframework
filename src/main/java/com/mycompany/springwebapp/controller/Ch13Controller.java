@@ -126,10 +126,24 @@ public class Ch13Controller {
 	}
 	
 	@GetMapping("/getboardList")
-	public String getboardList(@RequestParam(defaultValue="1") int pageNo, Model model){
+	public String getboardList(String pageNo, Model model, HttpSession session){
 		log.info("getboardList 실행");
+		//브라우저에서 pageNo가 넘어오지 않았을 경우
+		if(pageNo == null) {
+			//세션에 저장되어 있는지 확인
+			pageNo = (String) session.getAttribute("pageNo");
+			if(pageNo == null) {
+				//저장되어 있지 않다면 "1"로 초기화
+				pageNo = "1";
+			}
+		}
+		//문자열을 정수로 변환
+		int intPageNo = Integer.parseInt(pageNo);
+		//세션에 pageNo를 저장
+		session.setAttribute("pageNo", String.valueOf(pageNo));
+		
 		int totalBoardNums = boardService.getTotalBoardNum();
-		Ch13Pager pager = new Ch13Pager(5,5,totalBoardNums,pageNo);
+		Ch13Pager pager = new Ch13Pager(5,5,totalBoardNums, intPageNo);
 		
 		//List<Ch13Board> list = boardDaoOld.selectByPage(pager);
 		List<Ch13Board> list = boardService.getList(pager);
@@ -208,28 +222,44 @@ public class Ch13Controller {
 		os.close();
 	}
 	
-	@GetMapping("/updateboard")
-	public String updateboard() {
-		log.info("updateboard 실행");
+	@GetMapping("/updateBoard")
+	@Login
+	public String updateBoardForm(int bno, Model model,HttpSession session) {
+		log.info("updateBoard 실행");
 		//Select를 먼저 해준 다음, update를 해야함 (이것을 안하면 update시 다른 컬럼은 null이기 떄문에 필요한 bno만 수정)
 		//Ch13Board board = boardDaoOld.selectByBno(2);
-		Ch13Board board = boardService.getBoard(2);
-		board.setBtitle("수정한 졸리다");
-		board.setBcontent("수정한 그냥 졸리다");
-		board.setMid("user");
+		Ch13Board board = boardService.getBoard(bno);
 		
+		//아이디 다르면 수정 삭제 못하게 하는 코드(방법중 하나)
+		/*Ch13Member member = (Ch13Member) session.getAttribute("ch13Login");
+		if(!member.getMid().equals(board.getMid())) {
+			return "redirect:/ch13/getBoardList";
+		}*/
+		
+		model.addAttribute("board", board);
 		//boardDaoOld.updateByBno(board);
+		//boardService.modify(board);
+		return "ch13/updateBoardForm";
+	}
+	@PostMapping("/updateBoard")
+	@Login
+	public String updateBoard(Ch13Board board, Model model) {
+		log.info("updateBoard 실행");
+		//Select를 먼저 해준 다음, update를 해야함 (이것을 안하면 update시 다른 컬럼은 null이기 떄문에 필요한 bno만 수정)
+		//Ch13Board board = boardDaoOld.selectByBno(2);
 		boardService.modify(board);
-		return "redirect:/ch13/content";
+		//boardDaoOld.updateByBno(board);
+		//boardService.modify(board);
+		return "redirect:/ch13/getboardList";
 	}
 	
 	@GetMapping("/deleteBoard")
-	public String deleteBoard() {
+	@Login
+	public String deleteBoard(int bno, Model model) {
 		log.info("deleteBoard 실행");
 		//boardDaoOld.deleteByBno(bno);
-		int bno = 3;
 		boardService.remove(bno);
-		return "redirect:/ch13/content";
+		return "redirect:/ch13/getboardList";
 	}
 	
 	@GetMapping("/join")
